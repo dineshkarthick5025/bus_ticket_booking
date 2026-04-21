@@ -27,15 +27,14 @@ const HomePage = () => {
     return (
         <div className="relative">
             {/* Hero Section */}
-            <div className="relative h-[500px] overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-br from-primary-600 to-indigo-700"></div>
+            <div className="relative bg-gradient-to-br from-primary-600 to-indigo-700">
                 <div className="absolute inset-0 bg-black/20"></div>
 
-                <div className="relative max-w-7xl mx-auto px-4 pt-20 pb-32 flex flex-col items-center text-center">
+                <div className="relative max-w-7xl mx-auto px-4 pt-16 pb-12 md:pt-20 md:pb-16 flex flex-col items-center text-center">
                     <motion.h1
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="text-4xl md:text-6xl font-extrabold text-white mb-6"
+                        className="text-3xl sm:text-4xl md:text-6xl font-extrabold text-white mb-4"
                     >
                         Your Journey Starts Here
                     </motion.h1>
@@ -43,7 +42,7 @@ const HomePage = () => {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.1 }}
-                        className="text-xl text-primary-50 max-w-2xl mb-12"
+                        className="text-base sm:text-xl text-primary-50 max-w-2xl mb-8"
                     >
                         Find and book bus tickets to hundreds of destinations at the best prices.
                     </motion.p>
@@ -53,63 +52,68 @@ const HomePage = () => {
                         initial={{ opacity: 0, y: 40 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.2 }}
-                        className="w-full max-w-5xl glass-card rounded-2xl p-6 md:p-8 shadow-2xl"
+                        className="w-full max-w-5xl glass-card rounded-2xl p-4 sm:p-6 md:p-8 shadow-2xl"
                     >
-                        <form onSubmit={handleSearch} className="grid grid-cols-1 md:grid-cols-4 gap-4 items-end">
-                            <div className="relative">
-                                <label className="block text-sm font-semibold text-slate-700 mb-2">From</label>
-                                <div className="relative">
-                                    <MapPin className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 w-5 h-5" />
-                                    <input
-                                        type="text"
-                                        placeholder="Source City"
-                                        className="input-field pl-10"
-                                        value={from}
-                                        onChange={(e) => setFrom(e.target.value)}
-                                        required
-                                    />
+                        <form onSubmit={handleSearch} className="flex flex-col md:flex-row md:items-end gap-3">
+                            {/* From + Swap + To — always a row */}
+                            <div className="flex items-end gap-2 flex-1 min-w-0">
+                                <div className="flex-1 min-w-0">
+                                    <label className="block text-sm font-semibold text-slate-700 mb-1.5">From</label>
+                                    <div className="relative">
+                                        <MapPin className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 w-4 h-4 pointer-events-none" />
+                                        <input
+                                            type="text"
+                                            placeholder="Source City"
+                                            className="input-field pl-9"
+                                            value={from}
+                                            onChange={(e) => setFrom(e.target.value)}
+                                            required
+                                        />
+                                    </div>
                                 </div>
 
                                 <button
                                     type="button"
                                     onClick={swapLocations}
-                                    className="absolute -right-3 top-[60%] -translate-y-1/2 z-10 w-8 h-8 bg-white border border-slate-200 rounded-full flex items-center justify-center shadow-lg hover:bg-slate-50 transition-colors md:block hidden"
+                                    className="w-9 h-9 mb-[1px] bg-white border border-slate-200 rounded-full flex items-center justify-center shadow hover:bg-primary-50 hover:border-primary-300 transition-colors flex-shrink-0"
+                                    title="Swap locations"
                                 >
                                     <ArrowRightLeft className="w-4 h-4 text-primary-500" />
                                 </button>
-                            </div>
 
-                            <div className="relative">
-                                <label className="block text-sm font-semibold text-slate-700 mb-2">To</label>
-                                <div className="relative">
-                                    <MapPin className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 w-5 h-5" />
-                                    <input
-                                        type="text"
-                                        placeholder="Destination City"
-                                        className="input-field pl-10"
-                                        value={to}
-                                        onChange={(e) => setTo(e.target.value)}
-                                        required
-                                    />
+                                <div className="flex-1 min-w-0">
+                                    <label className="block text-sm font-semibold text-slate-700 mb-1.5">To</label>
+                                    <div className="relative">
+                                        <MapPin className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 w-4 h-4 pointer-events-none" />
+                                        <input
+                                            type="text"
+                                            placeholder="Destination City"
+                                            className="input-field pl-9"
+                                            value={to}
+                                            onChange={(e) => setTo(e.target.value)}
+                                            required
+                                        />
+                                    </div>
                                 </div>
                             </div>
 
-                            <div className="relative">
-                                <label className="block text-sm font-semibold text-slate-700 mb-2">Date</label>
+                            {/* Date — fixed width on desktop, full width on mobile */}
+                            <div className="w-full md:w-44">
+                                <label className="block text-sm font-semibold text-slate-700 mb-1.5">Date</label>
                                 <div className="relative">
-                                    <Calendar className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 w-5 h-5 z-10" />
+                                    <Calendar className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 w-4 h-4 z-10 pointer-events-none" />
                                     <DatePicker
                                         selected={date}
                                         onChange={(date) => setDate(date)}
-                                        className="input-field pl-10 w-full"
+                                        className="input-field pl-9 w-full"
                                         placeholderText="Select Date"
                                         minDate={new Date()}
                                     />
                                 </div>
                             </div>
 
-                            <button type="submit" className="btn-primary w-full h-[50px] flex items-center justify-center space-x-2">
-                                <Search className="w-5 h-5" />
+                            <button type="submit" className="btn-primary h-[42px] flex items-center justify-center gap-2 px-6 whitespace-nowrap flex-shrink-0">
+                                <Search className="w-4 h-4" />
                                 <span>Search Buses</span>
                             </button>
                         </form>
