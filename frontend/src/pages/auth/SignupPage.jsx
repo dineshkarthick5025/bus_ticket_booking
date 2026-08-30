@@ -39,7 +39,7 @@ const SignupPage = () => {
                         <UserPlus size={32} />
                     </div>
                     <h2 className="text-3xl font-black text-slate-900">Create Account</h2>
-                    <p className="text-slate-500 mt-2">Join Kavyamani Roadways for easy ticket booking</p>
+                    <p className="text-slate-500 mt-2">Join Red Roadways for easy ticket booking</p>
                 </div>
 
                 <form onSubmit={handleSubmit} className="space-y-5">

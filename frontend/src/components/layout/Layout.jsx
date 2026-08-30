@@ -13,9 +13,9 @@ const Layout = () => {
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
                         <div className="col-span-1 md:col-span-2">
-                            <h3 className="text-2xl font-bold text-white mb-4">Kavyamani Roadways</h3>
+                            <h3 className="text-2xl font-bold text-white mb-4">Red Roadways</h3>
                             <p className="text-slate-400 max-w-sm">
-                                Book your bus tickets instantly with Kavyamani Roadways. We provide a seamless and secure platform for all your travel needs.
+                                Book your bus tickets instantly with Red Roadways. We provide a seamless and secure platform for all your travel needs.
                             </p>
                         </div>
                         <div>
@@ -36,7 +36,7 @@ const Layout = () => {
                         </div>
                     </div>
                     <div className="mt-12 pt-8 border-t border-slate-800 text-center text-slate-500">
-                        <p>&copy; {new Date().getFullYear()} Kavyamani Roadways. All rights reserved.</p>
+                        <p>&copy; {new Date().getFullYear()} Red Roadways. All rights reserved.</p>
                     </div>
                 </div>
             </footer>
